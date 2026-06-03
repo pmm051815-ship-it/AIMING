@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>锐捷新程（北京）AI实训就业基地</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; background-color: #fff; color: #333; }
+        .header { position: fixed; top: 0; left: 0; right: 0; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 1000; padding: 0 40px; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 20px; font-weight: bold; color: #333; }
+        .nav-menu { display: flex; gap: 25px; align-items: center; }
+        .nav-menu a { text-decoration: none; color: #666; font-size: 15px; transition: color 0.3s; }
+        .nav-menu a:hover, .nav-menu a.active { color: #2A7BFF; }
+        .nav-menu a.active { border-bottom: 3px solid #2A7BFF; padding-bottom: 5px; }
+        .cta-button { background: #FF9800; color: white; padding: 10px 24px; border-radius: 8px; border: none; cursor: pointer; font-size: 15px; font-weight: 500; transition: background 0.3s; text-decoration: none; display: inline-block; }
+        .cta-button:hover { background: #E65100; }
+        .hero-section { margin-top: 70px; padding: 100px 40px 60px; text-align: center; background: #fff; }
+        .hero-title { font-size: 52px; font-weight: bold; color: #222; margin-bottom: 20px; }
+        .hero-subtitle { font-size: 18px; color: #666; margin-bottom: 60px; }
+        .stats-section { background: #f8f9fa; padding: 60px 40px; }
+        .stats-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px; text-align: center; }
+        .stat-item .stat-number { font-size: 36px; font-weight: bold; color: #2A7BFF; margin-bottom: 8px; }
+        .stat-item .stat-label { font-size: 14px; color: #666; }
+        .courses-section { max-width: 1200px; margin: 0 auto; padding: 80px 40px; }
+        .section-title { text-align: center; font-size: 32px; font-weight: bold; color: #222; margin-bottom: 50px; }
+        .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .course-card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
+        .course-card:hover { transform: translateY(-5px); box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+        .course-icon { width: 48px; height: 48px; margin-bottom: 16px; }
+        .course-title { font-size: 22px; font-weight: bold; color: #222; margin-bottom: 16px; }
+        .course-content { list-style: none; margin-bottom: 24px; }
+        .course-content li { font-size: 16px; color: #444; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+        .course-content li:last-child { border-bottom: none; }
+        .salary-info { font-size: 18px; font-weight: bold; color: #4CAF50; margin-bottom: 16px; }
+        .detail-link { color: #2A7BFF; text-decoration: none; font-size: 14px; display: inline-block; transition: color 0.3s; cursor: pointer; }
+        .detail-link:hover { color: #1A66B8; font-weight: 500; }
+        .testimonials-section { background: #f8f9fa; padding: 80px 40px; }
+        .testimonials-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .testimonial-card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .testimonial-header { display: flex; align-items: center; margin-bottom: 16px; }
+        .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; background: #E3F2FD; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-right: 12px; }
+        .testimonial-info h4 { font-size: 16px; color: #222; margin-bottom: 4px; }
+        .testimonial-info p { font-size: 13px; color: #999; }
+        .testimonial-text { font-size: 15px; color: #555; line-height: 1.6; font-style: italic; }
+        .guarantee-section { max-width: 1200px; margin: 0 auto; padding: 80px 40px; text-align: center; }
+        .guarantee-box { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); border-radius: 16px; padding: 50px 40px; }
+        .guarantee-title { font-size: 28px; font-weight: bold; color: #E65100; margin-bottom: 20px; }
+        .guarantee-desc { font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .guarantee-list { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 30px; }
+        .guarantee-item { font-size: 18px; font-weight: bold; color: #333; }
+        .guarantee-item span { color: #FF9800; font-size: 24px; }
+        .footer-banner { background: linear-gradient(to right, #2196F3, #4FC3F7); padding: 60px 40px; text-align: center; }
+        .footer-text { font-size: 28px; font-weight: bold; color: #fff; margin-bottom: 20px; }
+        .footer-cta { display: inline-block; background: #FF9800; color: white; padding: 14px 40px; border-radius: 8px; text-decoration: none; font-size: 18px; font-weight: 500; transition: background 0.3s; }
+        .footer-cta:hover { background: #E65100; }
+        .footer-info { background: #333; color: #aaa; padding: 30px 40px; text-align: center; font-size: 14px; }
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .hero-title { font-size: 36px; }
+            .courses-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">锐捷新程（北京）AI实训就业基地</div>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#about">关于我们</a>
+                <a href="#courses">实训课程</a>
+                <a href="#guarantee">就业保障</a>
+                <a href="#cases">学员案例</a>
+                <a href="#contact">联系我们</a>
+                <a href="https://f.wps.cn/g/yhVLaCsf/" target="_blank" class="cta-button">立即咨询</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero-section">
+        <h1 class="hero-title">选对赛道，45天切入AI高薪领域</h1>
+        <p class="hero-subtitle">三大黄金班型 · 零基础友好 · 就业保障写入合同</p>
+        <a href="https://f.wps.cn/g/yhVLaCsf/" target="_blank" class="cta-button" style="font-size:18px;padding:16px 48px;">立即免费咨询</a>
+    </section>
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">累计培养学员</div></div>
+            <div class="stat-item"><div class="stat-number">98.5%</div><div class="stat-label">综合就业率</div></div>
+            <div class="stat-item"><div class="stat-number">9600元</div><div class="stat-label">平均薪资</div></div>
+            <div class="stat-item"><div class="stat-number">45天</div><div class="stat-label">实训周期</div></div>
+            <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">合作企业</div></div>
+        </div>
+    </section>
+    <section class="guarantee-section" id="guarantee">
+        <div class="guarantee-box">
+            <h2 class="guarantee-title">三大黄金班型 · 零基础友好 · 就业保障写入合同</h2>
+            <p class="guarantee-desc">这不是营销话术，这是写进正式合同的条款。如果学员完成全部课程和考核，但未能获得达到保底薪资的 offer，我们按协议全额退还学费。</p>
+            <div class="guarantee-list">
+                <div class="guarantee-item">保底薪资 <span>8000-9000</span> 元/月</div>
+                <div class="guarantee-item">普遍薪资 <span>10000+</span> 元</div>
+                <div class="guarantee-item">优秀学员 <span>12000-15000</span> 元</div>
+                <div class="guarantee-item">未达标 <span>全额退费</span></div>
+            </div>
+            <a href="https://f.wps.cn/g/yhVLaCsf/" target="_blank" class="cta-button" style="font-size:18px;padding:14px 40px;">立即咨询了解详情</a>
+        </div>
+    </section>
+    <section class="courses-section" id="courses">
+        <h2 class="section-title">三大王牌课程</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <svg class="course-icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill="#F48C00" opacity="0.2"/><path d="M16 20c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z" fill="#FF9800"/><path d="M20 28l-4 8h16l-4-8" fill="#FFB74D"/></svg>
+                <h3 class="course-title">AI 数字媒体班</h3>
+                <ul class="course-content"><li>AI 内容生成</li><li>多平台运营</li><li>短视频/直播制作</li></ul>
+                <div class="salary-info">平均薪资：9200 元/月</div>
+                <a href="https://f.wps.cn/g/yhVLaCsf/" target="_blank" class="detail-link">了解详情 →</a>
+            </div>
+            <div class="course-card">
+                <svg class="course-icon" viewBox="0 0 48 48" fill="none"><rect x="8" y="28" width="8" height="12" fill="#2196F3"/><rect x="20" y="20" width="8" height="20" fill="#4CAF50"/><rect x="32" y="12" width="8" height="28" fill="#FFC107"/></svg>
+                <h3 class="course-title">大数据班</h3>
+                <ul class="course-content"><li>SQL 数据库</li><li>BI 可视化工具</li><li>AI 数据分析</li></ul>
+                <div class="salary-info">平均薪资：9800 元/月</div>
+                <a href="https://f.wps.cn/g/yhVLaCsf/" target="_blank" class="detail-link">了解详情 →</a>
+            </div>
+            <div class="course-card">
+                <svg class="course-icon" viewBox="0 0 48 48" fill="none"><path d="M12 28c0-6.6 5.4-12 12-12s12 5.4 12 12" stroke="#90CAF9" stroke-width="3" fill="none"/><ellipse cx="24" cy="28" rx="16" ry="8" fill="#E3F2FD"/></svg>
+                <h3 class="course-title">云计算班</h3>
+                <ul class="course-content"><li>Linux 系统</li><li>云平台运维</li><li>容器技术</li></ul>
+                <div class="salary-info">平均薪资：8800 元/月</div>
+                <a href="https://f.wps.cn/g/yhVLaCsf/" target="_blank" class="detail-link">了解详情 →</a>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials-section" id="cases">
+        <h2 class="section-title">学员真实案例</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">👨‍💼</div>
+                    <div class="testimonial-info"><h4>小李｜28岁</h4><p>前电商运营主管</p></div>
+                </div>
+                <p class="testimonial-text">被裁员 → 45天 AI 数字媒体实训 → 月薪 10K。"现在每天用 AI 工作，效率完全不一样。以前写文案要 2 小时，现在 20 分钟搞定。"</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">👩‍💻</div>
+                    <div class="testimonial-info"><h4>小张｜25岁</h4><p>应届毕业生</p></div>
+                </div>
+                <p class="testimonial-text">零基础 → 45天大数据实训 → 月薪 9.5K。"实训课程非常实战，毕业就能直接上手工作，面试官对我的项目经验很满意。"</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">👨‍🔧</div>
+                    <div class="testimonial-info"><h4>王哥｜32岁</h4><p>传统 IT 转型</p></div>
+                </div>
+                <p class="testimonial-text">运维工程师 → 45天云计算实训 → 月薪 12K。"从传统运维到云平台架构师，薪资翻倍，职业发展更有前景了。"</p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-banner" id="contact">
+        <p class="footer-text">一端是渴望成长的你，一端是求贤若渴的企业<br>北京 AI 实训就业基地 —— 做你最靠谱的搭桥人</p>
+        <a href="https://f.wps.cn/g/yhVLaCsf/" target="_blank" class="footer-cta">立即免费咨询</a>
+    </footer>
+    <div class="footer-info">© 锐捷新程（北京）AI实训就业基地 | 我们不做口头承诺，只交付写进合同的结果</div>
+</body>
+</html>
